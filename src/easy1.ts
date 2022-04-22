@@ -2,8 +2,7 @@
 // В функцию приходит массив состояний заказа и фильтруется
 // Нужно заменить FIXME на тип который вычисляется на основе OrderState
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FIXME = any;
+type FIXME = Array<Exclude<OrderState, "buyingSupplies" | "producing">>;
 
 const orderStates = [
   "initial",
