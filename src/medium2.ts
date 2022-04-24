@@ -3,11 +3,13 @@
 // Нужно заменить FIXME на правильный тип
 import React from "react";
 
-type ComponentDefaultProps<T> = React.ComponentType<T>["defaultProps"];
+type ComponentDefaultProps<T> = T extends { defaultProps: infer D }
+  ? D
+  : unknown;
 
 // Hint: infer
 export const getDefaultProps = <T>(
   component: React.ComponentType<T>
-): ComponentDefaultProps<T> => {
+): ComponentDefaultProps<React.ComponentType<T>> => {
   return component.defaultProps;
 };

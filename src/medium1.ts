@@ -7,7 +7,7 @@
 type InitialOrInWorkOrder = Extract<
   Order,
   { state: "initial" } | { state: "inWork" }
->;
+> | null;
 
 type Order =
   | {
