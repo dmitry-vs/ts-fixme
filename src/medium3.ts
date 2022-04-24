@@ -1,5 +1,5 @@
-type FIXME = Array<Exclude<OrderState, "buyingSupplies" | "producing">>;
-type FixmeElement = FIXME extends readonly (infer T)[] ? T : never;
+type UserOrderState = Exclude<OrderState, "buyingSupplies" | "producing">;
+type UserOrderStates = Array<UserOrderState>;
 
 const orderStates = [
   "initial",
@@ -12,8 +12,10 @@ const orderStates = [
 type OrderState = typeof orderStates[number];
 
 // Hint: type guards
-export const getUserOrderStates = (orderStates: OrderState[]): FIXME =>
+export const getUserOrderStates = (
+  orderStates: OrderState[]
+): UserOrderStates =>
   orderStates.filter(
-    (state): state is FixmeElement =>
+    (state): state is UserOrderState =>
       state !== "buyingSupplies" && state !== "producing"
   );

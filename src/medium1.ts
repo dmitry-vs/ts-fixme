@@ -4,7 +4,10 @@
 // А возвращает только initial и inWork
 // Нужно заменить FIXME на правильный тип вычисленный на основе Order
 
-type FIXME = Extract<Order, { state: "initial" } | { state: "inWork" }>;
+type InitialOrInWorkOrder = Extract<
+  Order,
+  { state: "initial" } | { state: "inWork" }
+>;
 
 type Order =
   | {
@@ -38,7 +41,9 @@ type Order =
       fullfillmentDate: Date;
     };
 
-export const filterOnlyInitialAndInWorkOrder = (order: Order): FIXME => {
+export const filterOnlyInitialAndInWorkOrder = (
+  order: Order
+): InitialOrInWorkOrder => {
   if (order.state === "initial" || order.state === "inWork") {
     return order;
   }

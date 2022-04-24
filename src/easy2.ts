@@ -2,7 +2,7 @@
 // Есть объединение (юнион) типов заказов в различных состояниях
 // Нужно заменить FIXME на тип который достанет из Order все возможные состояния (state)
 
-type FIXME = Order["state"];
+type OrderStates = Order["state"];
 
 type Order =
   | {
@@ -36,4 +36,4 @@ type Order =
       fullfillmentDate: Date;
     };
 
-export const getOrderState = (order: Order): FIXME => order.state;
+export const getOrderState = (order: Order): OrderStates => order.state;
